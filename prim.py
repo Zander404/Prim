@@ -1,4 +1,3 @@
-from grafo import Grafo
 import networkx as nx
 
 

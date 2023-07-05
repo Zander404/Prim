@@ -1,16 +1,19 @@
-class Grafo:
+import random
+import networkx as nx
 
-    def __init__(self, vertices):
-        self.vertices = vertices
-        self.grafo = [[0]*self.vertices for i in range(self.vertices)]
 
-    def adcionar_aresta(self, u, v, peso):
-        # Para grafos direcionados
-        self.grafo[u - 1][v-1] = 1
+def generate_random_edgelist(num_nodes, num_edges, weight_range=(1, 10)):
+    if num_nodes <= 0:
+        raise ValueError("Number of nodes must be greater than 0.")
 
-        # Para grafos não direcionados
-        self.grafo[v - 1][u - 1] = 1
+    edges = []
+    nodes = set(range(1, num_nodes + 1))
 
-    def mostrar_matriz(self):
-        for i in range(self.vertices):
-            print(self.grafo[i])
+    while len(edges) < num_edges and len(nodes) > 1:
+        u = random.choice(list(nodes))
+        nodes.remove(u)
+        v = random.choice(list(nodes))
+        weight = random.randint(weight_range[0], weight_range[1])
+        edges.append((u, v, weight))
+
+    return edges
