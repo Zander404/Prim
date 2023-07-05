@@ -2,19 +2,15 @@ class Grafo:
 
     def __init__(self, vertices):
         self.vertices = vertices
-        self.grafo = [[] for i in range(self.vertices)]
+        self.grafo = [[0]*self.vertices for i in range(self.vertices)]
 
     def adcionar_aresta(self, u, v, peso):
         # Para grafos direcionados
-        self.grafo[u - 1].append([v, peso])
+        self.grafo[u - 1][v-1] = 1
 
         # Para grafos não direcionados
-        self.grafo[v - 1].append([u, peso])
+        self.grafo[v - 1][u - 1] = 1
 
-    def mostra_lista(self):
+    def mostrar_matriz(self):
         for i in range(self.vertices):
-            print(f'{i + 1}:', end='  ')
-            for j in self.grafo[i]:
-                print(f'{j} -> ', end='  ')
-
-            print('')
+            print(self.grafo[i])
