@@ -3,7 +3,6 @@ import networkx as nx
 import prim as mst
 import matplotlib.pyplot as plt
 
-
 """
 Gerar o grafo com seus pesos
 """
