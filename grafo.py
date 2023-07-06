@@ -4,15 +4,15 @@ import networkx as nx
 
 def generate_random_graph(num_nodes, num_edges, weight_range=(1, 10)):
     if num_nodes <= 0 or num_edges <= 0:
-        raise ValueError("Number of nodes and edges must be greater than 0.")
+        raise ValueError("Números de Vértices e Arestas dever ser maior que 0.")
 
-    # Create an empty graph
+    # Criar o Grafo
     g = nx.Graph()
 
-    # Add nodes to the graph
+    # Adicionar vértices no Grafo
     g.add_nodes_from(range(1, num_nodes + 1))
 
-    # Add random edges to the graph
+    # Adicionar vértices aleatórios no grafo
     for _ in range(num_edges):
         u = random.randint(1, num_nodes)
         v = random.randint(1, num_nodes)

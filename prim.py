@@ -7,16 +7,16 @@ def prim(grafo, raiz):
     predecessor = {}
     custo[raiz] = 0
 
-    while vertices != []:
-        u = min(custo, key=custo.get)
+    while vertices:
 
+        u = min(custo, key=custo.get)
         for v in grafo.neighbors(u):
-            if (v in vertices):
-                if (not v in custo):
+            if v in vertices:
+                if not v in custo:
                     custo[v] = grafo[v][u]['weight']
                     predecessor[v] = u
                 else:
-                    if (custo[v] > grafo[v][u]['weight']):
+                    if custo[v] > grafo[v][u]['weight']:
                         custo[v] = grafo[v][u]['weight']
                         predecessor[v] = u
 
