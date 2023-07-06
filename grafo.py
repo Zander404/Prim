@@ -2,7 +2,7 @@ import random
 import networkx as nx
 
 
-def generate_random_graph(num_nodes, num_edges, weight_range=(1, 10)):
+def generate_random_graph(num_nodes, num_edges, weight_range=(1, 5)):
     if num_nodes <= 0 or num_edges <= 0:
         raise ValueError("Números de Vértices e Arestas dever ser maior que 0.")
 
