@@ -1,20 +1,25 @@
-class Grafo:
+import random
+import networkx as nx
 
-    def __init__(self, vertices):
-        self.vertices = vertices
-        self.grafo = [[] for i in range(self.vertices)]
 
-    def adcionar_aresta(self, u, v, peso):
-        # Para grafos direcionados
-        self.grafo[u - 1].append([v, peso])
+def generate_random_graph(num_nodes, num_edges, weight_range=(1, 10)):
+    if num_nodes <= 0 or num_edges <= 0:
+        raise ValueError("Number of nodes and edges must be greater than 0.")
 
-        # Para grafos não direcionados
-        self.grafo[v - 1].append([u, peso])
+    # Create an empty graph
+    g = nx.Graph()
 
-    def mostra_lista(self):
-        for i in range(self.vertices):
-            print(f'{i + 1}:', end='  ')
-            for j in self.grafo[i]:
-                print(f'{j} -> ', end='  ')
+    # Add nodes to the graph
+    g.add_nodes_from(range(1, num_nodes + 1))
 
-            print('')
+    # Add random edges to the graph
+    for _ in range(num_edges):
+        u = random.randint(1, num_nodes)
+        v = random.randint(1, num_nodes)
+        while u == v or g.has_edge(u, v):
+            u = random.randint(1, num_nodes)
+            v = random.randint(1, num_nodes)
+        weight = random.randint(weight_range[0], weight_range[1])
+        g.add_edge(u, v, weight=weight)
+
+    return g
